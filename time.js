@@ -1,42 +1,46 @@
-<html>
-    <head>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/minnojs/minno-quest@0.3/dist/main.css" />
-		<style type="text/css">
-        .container {padding-top: 15px;}
-		</style>
-	
-        <script>
-            // load MinnoJS from the CDN (you probably don't need to change this)
-            var scriptTag                = document.createElement('script');
-            scriptTag.src                = 'https://cdn.jsdelivr.net/gh/minnojs/minno-quest@0.3/dist/pi-minno.js';
-            scriptTag.onload             = onLoad;
-            scriptTag.onreadystatechange = onLoad;
-            document.head.appendChild(scriptTag);
+define(['timeAPI', 'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat8.js'], function(APIConstructor, iatExtension){
+    var API = new APIConstructor();
+
+	return iatExtension({
+		category1 : {
+			name : 'Black people', //Will appear in the data.
+			title : {
+				media : {word : 'Black people'}, //Name of the category presented in the task.
+				css : {color:'#31940F','font-size':'2em'}, //Style of the category title.
+				height : 4 //Used to position the "Or" in the combined block.
+			}, 
+			stimulusMedia : [ //Stimuli content as PIP's media objects
+    		    {image : 'black1.jpg'}, 
+    			{image : 'black2.jpg'}, 
+    			{image : 'black3.jpg'}, 
+    			{image : 'black4.jpg'}, 
+    			{image : 'black5.jpg'}, 
+    			{image : 'black6.jpg'}
+			], 
+			//Stimulus css (style)
+			stimulusCss : {color:'#31940F','font-size':'1.8em'}
+		},	
+		category2 :	{
+			name : 'White people', //Will appear in the data.
+			title : {
+				media : {word : 'White people'}, //Name of the category presented in the task.
+				css : {color:'#31940F','font-size':'2em'}, //Style of the category title.
+				height : 4 //Used to position the "Or" in the combined block.
+			}, 
+			stimulusMedia : [ //Stimuli content as PIP's media objects
+    		    {image : 'yf1.jpg'}, 
+    			{image : 'yf4.jpg'}, 
+    			{image : 'yf5.jpg'}, 
+    			{image : 'ym2.jpg'}, 
+    			{image : 'ym3.jpg'}, 
+    			{image : 'ym5.jpg'}			], 
+			//Stimulus css
+			stimulusCss : {color:'#31940F','font-size':'1.8em'}
+		},	
+
+		base_url : {//Where are your images at?
+			image : 'https://baranan.github.io/minno-tasks/images/'
+		} 
+	});
+});
         
-            // This function gets activated only after MinnoJS is loaded
-            function onLoad() {
-				// Create a div with class 'container' and id 'minno-app'
-				var container = document.createElement('div');
-				container.className = 'container';
-
-				// Create the canvas object
-				var canvas = document.createElement('div');
-
-				// Append the canvas object to the container
-				container.appendChild(canvas);
-			
-
-				// Append the container to the body
-				document.body.appendChild(container);
-                
-                // Run your study (just set the correct URL)
-                minnoJS(canvas, 'mgr.js');
-                
-                // We need to wait a few miliseconds for Qualtrics to register the value that we entered
-                minnoJS.onEnd = function () { setTimeout(proceed, 100); }
-            }
-        </script>
-    </head>
-    <body>
-    </body>
-</html>
