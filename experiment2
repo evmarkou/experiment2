@@ -2,4 +2,4 @@
             type: 'time',
             name: 'iat',
             scriptUrl: 'https://baranan.github.io/minno-tasks/studies/datapipe.iat.examples/demo.iats/careeriat.js'
-        }],
+        }]
